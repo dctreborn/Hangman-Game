@@ -25,9 +25,20 @@ After the user wins/loses the game should automatically choose another word and 
 
 //pick random word
 
+//Initializes game variables
+function initialize(){
+	wins = 0;
+	losses = 0;
+	guesses = 5;
+	userGuesses = [];
+	wordBlanks = [];
+}
+
+//Picks a random word from the word pool
 function randomWord(wordPool){
 	return wordPool[Math.floor(Math.random() * wordPool.length)];
 }
+
 //display random word as boxes or blanks
 
 //min guesses = 5; max guesses = word length / 2 + 5

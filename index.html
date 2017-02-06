@@ -22,6 +22,17 @@
 		var wins = 0;
 		var losses = 0;
 		var guesses;
+		var targetWord;
+		var userGuess;
+		var userGuesses = [];
+		var wordBlanks = [];
+
+		targetWord = randomWord(words);
+
+		//Get input
+		document.onkeyup = function(event) {
+			userGuess = event.key;
+		};
 	
 	
 	</script>
