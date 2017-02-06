@@ -29,7 +29,7 @@ After the user wins/loses the game should automatically choose another word and 
 function initialize(){
 	wins = 0;
 	losses = 0;
-	guesses = 5;
+	guesses = 0;
 	userGuesses = [];
 	wordBlanks = [];
 }
@@ -44,17 +44,47 @@ function blanks(targetWord){
 	for (var i = 0; i < targetWord.length; i++) {
 		wordBlanks[i] = "_";
 	}
+
+	for (var i = 0; i < wordBlanks.length; i++) {
+		$("#blanks").append(wordBlanks[i] + " ");
+	}
+	
 }
 
+//Checks current guess against list of guesses.
+//Adds current guess to guess list if not already in guess list
+//otherwise ignores it; to play sound if already guessed
+function checkGuess(guessList, guesses) {
 
-//min guesses = 5; max guesses = word length / 2 + 5
+	for (var i = 0; i < guessList.length; i++) {
+		if (guessList[i] == guess) {
+			//do nothing, yet
+		}
+		else if (i == guessList.length - 1) {
+			guesses++;
+			guessList.push(guess);
+		}
+	}	
+}
 
-//display letter in place of box/blank on correct guess
+//tallies wins and losses
+function tally() {
 
-//keep track of wins and losses
+}
+
+//prompts to reset game
+function reset(){
+
+}
+
+//show image of word
+function showImage(){
+
+}
+
+//game over sequence
+function gameOver(){
+
+}
 
 //loop game until exited(?)
-
-//show pictures on win/lose
-
-//initialize game variables

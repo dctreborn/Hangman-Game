@@ -14,6 +14,7 @@
 
 </head>
 <body>
+	<div id="blanks"></div>
 	
 
 
@@ -24,17 +25,19 @@
 		var guesses;
 		var targetWord;
 		var userGuess;
-		var userGuesses = [];
+		var userGuesses = [" "];
 		var wordBlanks = [];
 
 		//assign random word from pool and show as blanks for the length of the word
 		targetWord = randomWord(words);
+		guesses = Math.max(5 + Math.floor(targetWord.length / 2), 10);
 		blanks(targetWord);
-		console.log(wordBlanks);
 
 		//Get input
 		document.onkeyup = function(event) {
 			userGuess = event.key;
+
+			checkGuess(userGuesses, userGuess);
 		};
 	
 	
