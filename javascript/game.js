@@ -42,7 +42,12 @@ function randomWord(wordPool){
 //display random word as boxes or blanks equal to length of word
 function blanks(targetWord){
 	for (var i = 0; i < targetWord.length; i++) {
-		wordBlanks[i] = "_";
+		if (targetWord[i] == " ") {
+			wordBlanks[i] = "\u00A0";
+		}
+		else {
+			wordBlanks[i] = "_";
+		}
 	}
 
 	for (var i = 0; i < wordBlanks.length; i++) {
@@ -64,6 +69,8 @@ function checkGuess(guessList, guesses) {
 			guesses++;
 			guessList.push(guess);
 		}
+
+		//add condition for guessing entire word
 	}	
 }
 
