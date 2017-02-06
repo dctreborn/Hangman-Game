@@ -67,6 +67,11 @@ function checkGuess(guessList, guesses) {
 	}	
 }
 
+//sets number of guesses
+function setGuesses(targetWord) {
+	return Math.max(5 + Math.floor(targetWord.length / 2), 10);
+}
+
 //tallies wins and losses
 function tally() {
 

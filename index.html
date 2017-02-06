@@ -14,7 +14,11 @@
 
 </head>
 <body>
+	<div id="numGuesses"></div>
 	<div id="blanks"></div>
+	<div id="wins"></div>
+	<div id="losses"></div>
+	<div id="currentGuesses"></div>
 	
 
 
@@ -30,7 +34,7 @@
 
 		//assign random word from pool and show as blanks for the length of the word
 		targetWord = randomWord(words);
-		guesses = Math.max(5 + Math.floor(targetWord.length / 2), 10);
+		guesses = setGuesses(targetWord);
 		blanks(targetWord);
 
 		//Get input
