@@ -39,7 +39,13 @@ function randomWord(wordPool){
 	return wordPool[Math.floor(Math.random() * wordPool.length)];
 }
 
-//display random word as boxes or blanks
+//display random word as boxes or blanks equal to length of word
+function blanks(targetWord){
+	for (var i = 0; i < targetWord.length; i++) {
+		wordBlanks[i] = "_";
+	}
+}
+
 
 //min guesses = 5; max guesses = word length / 2 + 5
 

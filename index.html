@@ -27,7 +27,10 @@
 		var userGuesses = [];
 		var wordBlanks = [];
 
+		//assign random word from pool and show as blanks for the length of the word
 		targetWord = randomWord(words);
+		blanks(targetWord);
+		console.log(wordBlanks);
 
 		//Get input
 		document.onkeyup = function(event) {
