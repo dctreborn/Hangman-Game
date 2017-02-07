@@ -54,7 +54,7 @@ function blanks(targetWord){
 
 	for (var i = 0; i < wordBlanks.length; i++) {
 		var newSpan = $("<span>");
-		newSpan.attr("position", i);
+		newSpan.attr("id", i);
 		newSpan.text(wordBlanks[i] + " ")
 		$("#blanks").append(newSpan);
 	}
@@ -69,24 +69,35 @@ function checkGuess(guessList, guess) {
 		if (guessList[i] == guess) {
 			//do nothing, yet
 		}
+		//search match and update blanks
+		//reduce guesses and add to list of guesses
 		else if (i == guessList.length - 1) {
+			for (var i = 0; i < targetWord.length; i++) {
+				if (guess == targetWord.charAt(i)) {
+					$("#"+i).html(guess);
+					wordLength++;
+					console.log(wordLength);
+				}
+			}
 			guesses--;
 			guessList.push(guess);
+			console.log(guessList);
 		}
 
-		//add condition for guessing entire word
+		if (wordLength == targetWord.length){
+			console.log("you win!");//replace with proper code
+			wins++;
+		}
+		else if (guesses == 0){
+			console.log("you lose...");//replace with proper code
+			losses++;
+		}
 	}	
 }
 
 //sets number of guesses
 function setGuesses(targetWord) {
 	return Math.max(5 + Math.floor(targetWord.length / 2), 10);
-}
-
-//tallies wins and losses
-function tally() {
-
-
 }
 
 //prompts to reset game
