@@ -14,6 +14,7 @@
 
 </head>
 <body>
+	<div id="start"></div>
 	<div id="numGuesses"></div>
 	<div id="blanks"></div>
 	<div id="wins"></div>
@@ -23,6 +24,12 @@
 
 
 	<script type="text/javascript">
+		//start game sequence?
+		var gameStart = false;
+
+		//flag to determine game over
+		var gameFlag = false;
+
 		//contains word pool
 		var words = ["kitsune", "yuki onna"];
 
@@ -31,7 +38,7 @@
 		var losses = 0;
 
 		//holds number of guesses
-		var guesses;
+		var guesses = 6;
 
 		//holds to be guessed
 		var targetWord;
@@ -45,25 +52,28 @@
 		//holds all guesses made
 		var userGuesses = [" "];
 
-		//flag to determine game over
-		var gameFlag = false;
 
-		//assign random word from pool and show as blanks for the length of the word
-		targetWord = randomWord(words);
-		guesses = setGuesses(targetWord);
-		blanks(targetWord);
+		$("#start").html("Press any key to start")
 
-		//Get input
 		document.onkeyup = function(event) {
-			userGuess = event.key;
+			if (gameStart == false) {
+				gameStart = true;
 
-			checkGuess(userGuesses, userGuess);
+				//clears press any key prompt
+				$("#start").empty();
 
-			if (gameFlag) {
-				gameOver();
+				//assign random word from pool and show as blanks for the length of the word
+				targetWord = randomWord(words);
+				//guesses = setGuesses(targetWord); possible use for future balance
+				blanks(targetWord);
 			}
-		};
-	
+			else if (gameStart){
+				userGuess = event.key.toLowerCase();
+
+				checkGuess(userGuesses, userGuess);
+				checkResult();
+			}
+		}
 	
 	</script>
 	

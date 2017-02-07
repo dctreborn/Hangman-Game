@@ -29,10 +29,12 @@ After the user wins/loses the game should automatically choose another word and 
 function initialize(){
 	wins = 0;
 	losses = 0;
-	guesses = 0;
+	guesses = 6;
 	wordLength = 0;
 	userGuesses = [];
 	wordBlanks = [];
+	gameFlag = false;
+	//initialize random word?
 }
 
 //Picks a random word from the word pool
@@ -70,18 +72,35 @@ function checkGuess(guessList, guess) {
 		//do nothing, yet
 	}
 	else if (guesses > 0) {
-		guesses--;
 		guessList.push(guess);
 
-		for (var i = 0; i < targetWord.length; i++) {
-			if (guess == targetWord.charAt(i)) {
-				$("#"+i).html(guess);
-				wordLength++;
+		//if letter is in word, find position and fill blanks
+		if (targetWord.includes(guess)) {
+			console.log("letter exists");
+			console.log(guesses);
+			for (var i = 0; i < targetWord.length; i++) {
+				if (guess == targetWord.charAt(i)) {
+					$("#"+i).html(guess);
+					wordLength++;
+				}
 			}
 		}
-	}
+		//if letter is not in word, decrease guesses
+		else {
+			guesses--;
+			console.log("letter does not exist");
+			console.log(guesses);
+		}
+	}		
+}
 
-		
+/*sets number of guesses; possible use for future balance
+function setGuesses(targetWord) {
+	return Math.max(5 + Math.floor(targetWord.length / 2), 10);
+}*/
+
+//checks win/loss
+function checkResult () {
 	if (wordLength == targetWord.length){
 		console.log("you win!");//replace with proper code
 		wins++;//define exit code
@@ -92,12 +111,6 @@ function checkGuess(guessList, guess) {
 		losses++;//define exit code
 		gameFlag = true;
 	}
-		
-}
-
-//sets number of guesses
-function setGuesses(targetWord) {
-	return Math.max(5 + Math.floor(targetWord.length / 2), 10);
 }
 
 //prompts to reset game
