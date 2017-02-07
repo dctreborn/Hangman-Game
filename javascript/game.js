@@ -65,34 +65,31 @@ function blanks(targetWord){
 //otherwise ignores it; to play sound if already guessed
 function checkGuess(guessList, guess) {
 
-	for (var i = 0; i < guessList.length; i++) {
-		if (guessList[i] == guess) {
-			//do nothing, yet
-		}
-		//search match and update blanks
-		//reduce guesses and add to list of guesses
-		else if (i == guessList.length - 1) {
-			for (var i = 0; i < targetWord.length; i++) {
-				if (guess == targetWord.charAt(i)) {
-					$("#"+i).html(guess);
-					wordLength++;
-					console.log(wordLength);
-				}
-			}
-			guesses--;
-			guessList.push(guess);
-			console.log(guessList);
-		}
+	if (guessList.includes(guess)) {
+		//do nothing, yet
+	}
+	else if (guesses > 0) {
+		guesses--;
+		guessList.push(guess);
 
-		if (wordLength == targetWord.length){
-			console.log("you win!");//replace with proper code
-			wins++;
+		for (var i = 0; i < targetWord.length; i++) {
+			if (guess == targetWord.charAt(i)) {
+				$("#"+i).html(guess);
+				wordLength++;
+			}
 		}
-		else if (guesses == 0){
-			console.log("you lose...");//replace with proper code
-			losses++;
-		}
-	}	
+	}
+
+		
+	if (wordLength == targetWord.length){
+		console.log("you win!");//replace with proper code
+		wins++;//define exit code
+	}
+	else if (guesses == 0){
+		console.log("you lose...");//replace with proper code
+		losses++;//define exit code
+	}
+		
 }
 
 //sets number of guesses
