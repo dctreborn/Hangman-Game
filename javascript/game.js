@@ -41,9 +41,11 @@ function randomWord(wordPool){
 
 //display random word as boxes or blanks equal to length of word
 function blanks(targetWord){
+	var wordBlanks = [];
 	for (var i = 0; i < targetWord.length; i++) {
 		if (targetWord[i] == " ") {
 			wordBlanks[i] = "\u00A0";
+			wordLength++;
 		}
 		else {
 			wordBlanks[i] = "_";
@@ -51,22 +53,24 @@ function blanks(targetWord){
 	}
 
 	for (var i = 0; i < wordBlanks.length; i++) {
-		$("#blanks").append(wordBlanks[i] + " ");
+		var newSpan = $("<span>");
+		newSpan.attr("position", i);
+		newSpan.text(wordBlanks[i] + " ")
+		$("#blanks").append(newSpan);
 	}
-	
 }
 
 //Checks current guess against list of guesses.
 //Adds current guess to guess list if not already in guess list
 //otherwise ignores it; to play sound if already guessed
-function checkGuess(guessList, guesses) {
+function checkGuess(guessList, guess) {
 
 	for (var i = 0; i < guessList.length; i++) {
 		if (guessList[i] == guess) {
 			//do nothing, yet
 		}
 		else if (i == guessList.length - 1) {
-			guesses++;
+			guesses--;
 			guessList.push(guess);
 		}
 
@@ -81,6 +85,7 @@ function setGuesses(targetWord) {
 
 //tallies wins and losses
 function tally() {
+
 
 }
 

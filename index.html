@@ -8,8 +8,8 @@
 		 crossorigin="anonymous"></script>
 	<script type="text/javascript" src="javascript/game.js"></script>
 
-	<link rel="stylesheet" href="assets/css/reset.css">
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 </head>
@@ -23,14 +23,21 @@
 
 
 	<script type="text/javascript">
+		//contains word pool
 		var words = ["kitsune", "yuki onna"];
+		//holds wins/losses
 		var wins = 0;
 		var losses = 0;
+		//holds number of guesses
 		var guesses;
+		//holds to be guessed
 		var targetWord;
+		//holds word length, to be used to determine complete match
+		var wordLength = 0;
+		//holds user input
 		var userGuess;
+		//holds all guesses made
 		var userGuesses = [" "];
-		var wordBlanks = [];
 
 		//assign random word from pool and show as blanks for the length of the word
 		targetWord = randomWord(words);
