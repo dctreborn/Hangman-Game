@@ -30,6 +30,7 @@ function initialize(){
 	wins = 0;
 	losses = 0;
 	guesses = 0;
+	wordLength = 0;
 	userGuesses = [];
 	wordBlanks = [];
 }
@@ -84,10 +85,12 @@ function checkGuess(guessList, guess) {
 	if (wordLength == targetWord.length){
 		console.log("you win!");//replace with proper code
 		wins++;//define exit code
+		gameFlag = true;
 	}
 	else if (guesses == 0){
 		console.log("you lose...");//replace with proper code
 		losses++;//define exit code
+		gameFlag = true;
 	}
 		
 }
@@ -109,7 +112,7 @@ function showImage(){
 
 //game over sequence
 function gameOver(){
-
+	
 }
 
 //loop game until exited(?)

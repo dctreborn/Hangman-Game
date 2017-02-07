@@ -25,19 +25,28 @@
 	<script type="text/javascript">
 		//contains word pool
 		var words = ["kitsune", "yuki onna"];
+
 		//holds wins/losses
 		var wins = 0;
 		var losses = 0;
+
 		//holds number of guesses
 		var guesses;
+
 		//holds to be guessed
 		var targetWord;
+
 		//holds word length, to be used to determine complete match
 		var wordLength = 0;
+
 		//holds user input
 		var userGuess;
+
 		//holds all guesses made
 		var userGuesses = [" "];
+
+		//flag to determine game over
+		var gameFlag = false;
 
 		//assign random word from pool and show as blanks for the length of the word
 		targetWord = randomWord(words);
@@ -49,6 +58,10 @@
 			userGuess = event.key;
 
 			checkGuess(userGuesses, userGuess);
+
+			if (gameFlag) {
+				gameOver();
+			}
 		};
 	
 	
