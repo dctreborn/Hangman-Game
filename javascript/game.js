@@ -21,20 +21,20 @@ After the user wins/loses the game should automatically choose another word and 
 
 //youkai theme
 
-//Start Game
-
-//pick random word
-
-//Initializes game variables
+//initializes screen and word pool
 function initialize(){
-	wins = 0;
-	losses = 0;
-	guesses = 6;
-	wordLength = 0;
-	userGuesses = [];
-	wordBlanks = [];
-	gameFlag = false;
-	//initialize random word?
+	words = ["kitsune", "yuki onna"];
+
+	$("#start").empty();
+	$("#numGuesses").html("Guesses Remaining: " + guesses);
+	$("#wins").html("Wins: " + wins);
+	$("#losses").html("Losses: " + losses);
+	$("#currentGuesses").html("Current Guesses: " + userGuesses);
+
+	//assign random word from pool and show as blanks for the length of the word
+	targetWord = randomWord(words);
+	//guesses = setGuesses(targetWord); possible use for future balance
+	blanks(targetWord);
 }
 
 //Picks a random word from the word pool
@@ -79,7 +79,7 @@ function checkGuess(guessList, guess) {
 		if (targetWord.includes(guess)) {
 			for (var i = 0; i < targetWord.length; i++) {
 				if (guess == targetWord.charAt(i)) {
-					$("#"+i).html(guess.toUpperCase());
+					$("#"+i).html(guess);
 					wordLength++;
 				}
 			}
@@ -116,8 +116,8 @@ function checkResult () {
 }
 
 //prompts to reset game
-function reset(){
-
+function replay(){
+	console.log("replay");
 }
 
 //show image of word
@@ -129,5 +129,7 @@ function showImage(){
 function gameOver(){
 	if (gameFlag) {
 		console.log("game over");
+		console.log("restart game?")
+		replay(); //only process if restart is true
 	}	
 }
