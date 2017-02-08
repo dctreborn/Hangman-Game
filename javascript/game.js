@@ -73,6 +73,7 @@ function checkGuess(guessList, guess) {
 	}
 	else if (guesses > 0) {
 		guessList.push(guess);
+		$("#currentGuesses").append(guessList[guessList-1]);
 
 		//if letter is in word, find position and fill blanks
 		if (targetWord.includes(guess)) {
@@ -88,6 +89,7 @@ function checkGuess(guessList, guess) {
 		//if letter is not in word, decrease guesses
 		else {
 			guesses--;
+			$("#numGuesses").html("Guesses: " + guesses);
 			console.log("letter does not exist");
 			console.log(guesses);
 		}
