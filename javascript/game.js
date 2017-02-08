@@ -115,9 +115,18 @@ function checkResult () {
 	}
 }
 
-//prompts to reset game
+//resets guesses, game flag, word blanks, target wordm and current guesses
 function replay(){
 	console.log("replay");
+	guesses = 6;
+	gameFlag = false;
+	$("#blanks").empty();
+	$("#currentGuesses").empty().html("Current Guesses: ");
+	userGuesses = [" "];
+	//assign random word from pool and show as blanks for the length of the word
+	targetWord = randomWord(words);
+	//guesses = setGuesses(targetWord); possible use for future balance
+	blanks(targetWord);
 }
 
 //show image of word
