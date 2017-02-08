@@ -77,8 +77,6 @@ function checkGuess(guessList, guess) {
 
 		//if letter is in word, find position and fill blanks
 		if (targetWord.includes(guess)) {
-			console.log("letter exists");
-			console.log(guesses);
 			for (var i = 0; i < targetWord.length; i++) {
 				if (guess == targetWord.charAt(i)) {
 					$("#"+i).html(guess.toUpperCase());
@@ -90,8 +88,6 @@ function checkGuess(guessList, guess) {
 		else {
 			guesses--;
 			$("#numGuesses").html("Guesses: " + guesses);
-			console.log("letter does not exist");
-			console.log(guesses);
 		}
 	}		
 }
@@ -103,17 +99,19 @@ function setGuesses(targetWord) {
 
 //checks win/loss
 function checkResult () {
-	if (wordLength == targetWord.length){	
-		console.log("you win!");//replace with proper code
-		wins++;//define exit code
-		gameFlag = true;
-		$("#wins").html("Wins: " + wins);
-	}
-	else if (guesses == 0){
-		console.log("you lose...");//replace with proper code
-		losses++;//define exit code
-		gameFlag = true;
-		$("#losses").html("Losses: " + losses);
+	if (gameFlag == false){
+		if (wordLength == targetWord.length){	
+			console.log("you win!");//replace with proper code
+			wins++;//define exit code
+			gameFlag = true;
+			$("#wins").html("Wins: " + wins);
+		}
+		else if (guesses == 0){
+			console.log("you lose...");//replace with proper code
+			losses++;//define exit code
+			gameFlag = true;
+			$("#losses").html("Losses: " + losses);
+		}
 	}
 }
 
@@ -129,7 +127,7 @@ function showImage(){
 
 //game over sequence
 function gameOver(){
-	
+	if (gameFlag) {
+		console.log("game over");
+	}	
 }
-
-//loop game until exited(?)
