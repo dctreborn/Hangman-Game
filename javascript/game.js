@@ -23,7 +23,12 @@ After the user wins/loses the game should automatically choose another word and 
 
 //initializes screen and word pool
 function initialize(){
+	console.log("initialize");
 	words = ["kitsune", "yuki onna"];
+	guesses = 6;
+	wordLength = 0;
+	userGuesses = [" "];
+	gameFlag = false;
 
 	$("#start").empty();
 	$("#numGuesses").html("Guesses Remaining: " + guesses);
@@ -118,20 +123,13 @@ function checkResult () {
 //resets guesses, game flag, word blanks, target wordm and current guesses
 function replay(){
 	console.log("replay");
-	guesses = 6;
-	gameFlag = false;
 	$("#blanks").empty();
-	$("#currentGuesses").empty().html("Current Guesses: ");
-	userGuesses = [" "];
-	//assign random word from pool and show as blanks for the length of the word
-	targetWord = randomWord(words);
-	//guesses = setGuesses(targetWord); possible use for future balance
-	blanks(targetWord);
+	$("#currentGuesses").empty();
+	initialize();
 }
-
 //show image of word
 function showImage(){
-
+	//use objects for images
 }
 
 //game over sequence
