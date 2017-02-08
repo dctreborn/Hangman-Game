@@ -73,7 +73,7 @@ function checkGuess(guessList, guess) {
 	}
 	else if (guesses > 0) {
 		guessList.push(guess);
-		$("#currentGuesses").append(guessList[guessList-1]);
+		$("#currentGuesses").append(guessList[guessList.length-1].toUpperCase() + " ");
 
 		//if letter is in word, find position and fill blanks
 		if (targetWord.includes(guess)) {
@@ -81,7 +81,7 @@ function checkGuess(guessList, guess) {
 			console.log(guesses);
 			for (var i = 0; i < targetWord.length; i++) {
 				if (guess == targetWord.charAt(i)) {
-					$("#"+i).html(guess);
+					$("#"+i).html(guess.toUpperCase());
 					wordLength++;
 				}
 			}
@@ -103,15 +103,17 @@ function setGuesses(targetWord) {
 
 //checks win/loss
 function checkResult () {
-	if (wordLength == targetWord.length){
+	if (wordLength == targetWord.length){	
 		console.log("you win!");//replace with proper code
 		wins++;//define exit code
 		gameFlag = true;
+		$("#wins").html("Wins: " + wins);
 	}
 	else if (guesses == 0){
 		console.log("you lose...");//replace with proper code
 		losses++;//define exit code
 		gameFlag = true;
+		$("#losses").html("Losses: " + losses);
 	}
 }
 
