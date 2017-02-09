@@ -6,8 +6,7 @@ After the user wins/loses the game should automatically choose another word and 
 //initializes screen and word pool
 function initialize(){
 	console.log("initialize");
-	words = [];
-	createList(words);
+	words =	createList();
 	guesses = 6;
 	wordLength = 0;
 	userGuesses = [" "];
@@ -25,22 +24,27 @@ function initialize(){
 	blanks(targetWord);
 }
 
-//create word list
-function createList(wordList){
-
-	//word template
-	function youkai(name, image,){
-		this.name = name;
-		this.image = image;
-		//to add url link to youkai article
+//word template
+function youkai(name, image){
+	return {
+	name: name,
+	image: image
+	//to add url link to youkai article
 	}
+}
+
+//create word list
+function createList(){
+	var array = [];
 
 	//list of words
-	wordList.push(new youkai("kistune", "kitsune.jpg"));
-	wordList.push(new youkai("yuki onna", "yukionna.jpg"));
-	wordList.push(new youkai("kappa", "kappa.jpg"));
-	wordList.push(new youkai("oni", "oni.jpg"));
-	wordList.push(new youkai("yamata no orochi", "yamatanoorochi.png"));
+	array.push(youkai("kistune", "kitsune.jpg"));
+	array.push(youkai("yuki onna", "yukionna.jpg"));
+	array.push(youkai("kappa", "kappa.jpg"));
+	array.push(youkai("oni", "oni.jpg"));
+	array.push(youkai("yamata no orochi", "yamatanoorochi.png"));
+
+	return array;
 }
 
 //Picks a random word from the word pool
