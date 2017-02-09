@@ -56,6 +56,7 @@
 		$("#start").html("Press any key to start")
 
 		document.onkeyup = function(event) {
+
 			if (gameStart == false) {
 				gameStart = true;
 
@@ -63,7 +64,13 @@
 				initialize();
 			}
 			else if (gameStart){
-				userGuess = event.key.toLowerCase();
+				//filters out non alphanumeric keys and sets them to "1"
+				if (event.key.length > 1) {
+					userGuess = "1";
+				}
+				else {
+					userGuess = event.key.toLowerCase();
+				}
 
 				checkGuess(userGuesses, userGuess);
 				checkResult();
