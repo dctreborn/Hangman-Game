@@ -3,12 +3,6 @@
 After the user wins/loses the game should automatically choose another word and make the user play it.
 */
 
-/* test field to produce image from object
-	words = {};
-	words.entry01: {name: "kitsune", image: "image-url"};
-	words.entry02: {name: "yuki-onna", image: "image-url"};
-*/
-
 //initializes screen and word pool
 function initialize(){
 	console.log("initialize");
@@ -139,7 +133,7 @@ function showImage(){
 	//use objects for images
 	var youkaiPic = $("<img>");
 	youkaiPic.attr("src","images/" + wordPic);
-	$("#image").append(youkaiPic);
+	$("#image").html(youkaiPic);
 }
 
 //game over sequence
