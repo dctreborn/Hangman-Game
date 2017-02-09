@@ -4,15 +4,16 @@ After the user wins/loses the game should automatically choose another word and 
 */
 
 /* test field to produce image from object
-	words = {
-		
-	}
+	words = {};
+	words.entry01: {name: "kitsune", image: "image-url"};
+	words.entry02: {name: "yuki-onna", image: "image-url"};
 */
 
 //initializes screen and word pool
 function initialize(){
 	console.log("initialize");
-	words = ["kitsune", "yuki onna"];
+	words = [];
+	createList(words);
 	guesses = 6;
 	wordLength = 0;
 	userGuesses = [" "];
@@ -30,9 +31,25 @@ function initialize(){
 	blanks(targetWord);
 }
 
+//create word list
+function createList(wordList){
+
+	//word template
+	function youkai(name, image){
+		this.name = name;
+		this.image = image;
+	}
+
+	//list of words
+	wordList.push(new youkai("kistune", "kitsune.jpg"));
+	wordList.push(new youkai("yuki onna", "yukionna.jpg"));
+}
+
 //Picks a random word from the word pool
 function randomWord(wordPool){
-	return wordPool[Math.floor(Math.random() * wordPool.length)];
+	var index = wordPool[Math.floor(Math.random() * wordPool.length)];
+	wordPic = index.image;
+	return index.name;
 }
 
 //display random word as boxes or blanks equal to length of word
@@ -99,6 +116,7 @@ function checkResult () {
 			wins++;//define exit code
 			gameFlag = true;
 			$("#wins").html("Wins: " + wins);
+			showImage();
 		}
 		else if (guesses == 0){
 			console.log("you lose...");//replace with proper code
@@ -119,6 +137,9 @@ function replay(){
 //show image of word
 function showImage(){
 	//use objects for images
+	var youkaiPic = $("<img>");
+	youkaiPic.attr("src","images/" + wordPic);
+	$("#image").append(youkaiPic);
 }
 
 //game over sequence
