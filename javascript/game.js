@@ -29,14 +29,18 @@ function initialize(){
 function createList(wordList){
 
 	//word template
-	function youkai(name, image){
+	function youkai(name, image,){
 		this.name = name;
 		this.image = image;
+		//to add url link to youkai article
 	}
 
 	//list of words
 	wordList.push(new youkai("kistune", "kitsune.jpg"));
 	wordList.push(new youkai("yuki onna", "yukionna.jpg"));
+	wordList.push(new youkai("kappa", "kappa.jpg"));
+	wordList.push(new youkai("oni", "oni.jpg"));
+	wordList.push(new youkai("yamata no orochi", "yamatanoorochi.png"));
 }
 
 //Picks a random word from the word pool
