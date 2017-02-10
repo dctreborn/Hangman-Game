@@ -141,6 +141,7 @@ function replay(){
 }
 //show image of word
 function showImage(){
+	$("#hangman").empty();
 	//use objects for images
 	var img = $("<img>");
 	img.attr("src","images/" + wordPic);
@@ -160,9 +161,9 @@ function gameOver(){
 
 //draws hangman image
 function drawHang(){
+	$("#image").empty();
 	//show image little by little on wrong guesses
 	//also change opacity
-	//no scroll bar
 	var img = $("<img>");
 	img.attr("src","images/waraningyo.png");
 	img.attr("id","wara");
