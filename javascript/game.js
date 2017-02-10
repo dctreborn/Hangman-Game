@@ -25,10 +25,11 @@ function initialize(){
 }
 
 //word template
-function youkai(name, image){
+function youkai(name, image, url){
 	return {
 	name: name,
-	image: image
+	image: image,
+	url: url
 	//to add url link to youkai article
 	}
 }
@@ -38,11 +39,11 @@ function createList(){
 	var array = [];
 
 	//list of words
-	array.push(youkai("kistune", "kitsune.jpg"));
-	array.push(youkai("yuki onna", "yukionna.jpg"));
-	array.push(youkai("kappa", "kappa.jpg"));
-	array.push(youkai("oni", "oni.jpg"));
-	array.push(youkai("yamata no orochi", "yamatanoorochi.png"));
+	array.push(youkai("kistune", "kitsune.jpg", "http://yokai.com/kitsune/"));
+	array.push(youkai("yuki onna", "yukionna.jpg", ""));
+	array.push(youkai("kappa", "kappa.jpg", ""));
+	array.push(youkai("oni", "oni.jpg", ""));
+	array.push(youkai("yamata no orochi", "yamatanoorochi.png", ""));
 
 	return array;
 }
@@ -51,6 +52,7 @@ function createList(){
 function randomWord(wordPool){
 	var index = wordPool[Math.floor(Math.random() * wordPool.length)];
 	wordPic = index.image;
+	wordUrl = index.url;
 	return index.name;
 }
 
@@ -141,7 +143,9 @@ function showImage(){
 	//use objects for images
 	var youkaiPic = $("<img>");
 	youkaiPic.attr("src","images/" + wordPic);
+	youkaiPic.attr("id","youkaiImg");
 	$("#image").html(youkaiPic);
+	$("#youkaiImg").wrap($("<a>",{href: wordUrl, target: "_blank"}));
 }
 
 //game over sequence
