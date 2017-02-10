@@ -21,7 +21,8 @@
 		<div class="jumbotron text-center"><h1>Youkai Hangman</h1></div>
 		<div class="row">
 			<div class="col-md-12 text-center" id="message">
-				<div id="start"></div>
+				<div id="start"></div> <!--change message as player misses letters: you hear footsteps, they come closer, they have stopped, you are dead, etc
+										also display win message-->
 			</div>
 		</div>
 		
@@ -45,13 +46,11 @@
 				</div>
 			</div>
 
-			<div class="col-sm-4 col-md-4" id="visual">
-				<div class="panel panel-default">
-		  			<div class="panel-body center-block">
-						<div id="hangman"></div>
-						<div id="image"></div>
+			<div class="col-md-4" id="visual">
+					<div class="thumbnail mx-auto d-block text-center">
+							<div id="hangman"></div>
+							<div id="image"></div>							
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>

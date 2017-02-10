@@ -12,7 +12,7 @@ function initialize(){
 	userGuesses = [" "];
 	gameFlag = false;
 
-	$("#start").empty();
+	$(".caption").empty();
 	$("#numGuesses").html("Guesses Remaining: " + guesses);
 	$("#wins").html("Wins: " + wins);
 	$("#losses").html("Losses: " + losses);

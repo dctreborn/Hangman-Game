@@ -20,25 +20,21 @@ body {
 	height: 350px;
 }
 
-.panel-body #hangman, .panel-body #image {
+#visual .panel-body {
 	position: relative;
+}
+
+#stats .panel{
+	min-height: 150px;
+	max-height: 180px;
 }
 
 #message {
 	font-size: 24px;
 }
 
-#youkaiImg {
-	width: 70%;
-	height: auto;
-}
-
-#wara {
-	position: absolute;
-	top: 0;
-	width: 70%;
-	height: auto;
-	overflow: hidden;
+#youkaiImg, #wara {
+	width: 100%;
 }
 
 #footer { /* try sticker footer styling from basic*/
