@@ -103,6 +103,7 @@ function checkGuess(guessList, guess) {
 		else {
 			guesses--;
 			$("#numGuesses").html("Guesses: " + guesses);
+			drawHang();
 		}
 	}		
 }
@@ -141,10 +142,10 @@ function replay(){
 //show image of word
 function showImage(){
 	//use objects for images
-	var youkaiPic = $("<img>");
-	youkaiPic.attr("src","images/" + wordPic);
-	youkaiPic.attr("id","youkaiImg");
-	$("#image").html(youkaiPic);
+	var img = $("<img>");
+	img.attr("src","images/" + wordPic);
+	img.attr("id","youkaiImg");
+	$("#image").html(img);
 	$("#youkaiImg").wrap($("<a>",{href: wordUrl, target: "_blank"}));
 }
 
@@ -162,4 +163,8 @@ function drawHang(){
 	//show image little by little on wrong guesses
 	//also change opacity
 	//no scroll bar
+	var img = $("<img>");
+	img.attr("src","images/waraningyo.png");
+	img.attr("id","wara");
+	$("#hangman").html(img);
 }
