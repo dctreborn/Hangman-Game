@@ -16,7 +16,7 @@ function initialize(){
 	$("#numGuesses").html("Guesses Remaining: " + guesses);
 	$("#wins").html("Wins: " + wins);
 	$("#losses").html("Losses: " + losses);
-	$("#currentGuesses").html("Current Guesses: " + userGuesses);
+	$("#currentGuesses").html("<br>" + "Current Guesses: " + "<br>" + userGuesses);
 
 	//assign random word from pool and show as blanks for the length of the word
 	targetWord = randomWord(words);

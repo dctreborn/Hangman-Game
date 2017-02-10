@@ -9,23 +9,24 @@
 	<script type="text/javascript" src="javascript/game.js"></script>
 
 	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+
 
 	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet"> 
 
 </head>
 <body>
-	<div class="content text-center">
-		<div class="jumbotron"><h1>Youkai Hangman</h1></div>
+	<div class="container">
+		<div class="jumbotron text-center"><h1>Youkai Hangman</h1></div>
 		<div class="row">
-			<div class="col-md-12" id="message">
+			<div class="col-md-12 text-center" id="message">
 				<div id="start"></div>
 			</div>
 		</div>
 		
 		<div class="row">
-			<div class="col-sm-4 col-md-4" id="stats">
+			<div class="col-sm-4 col-md-4 text-center" id="stats">
 				<div class="panel panel-default">
 		  			<div class="panel-body">
 						<div id="numGuesses"></div>
@@ -35,7 +36,7 @@
 				</div>
 			</div>
 			
-			<div class="col-sm-4 col-md-4" id="gameArea">
+			<div class="col-sm-4 col-md-4 text-center" id="gameArea">
 				<div class="panel panel-default">
 		  			<div class="panel-body">
 						<div id="blanks"></div>			
@@ -46,13 +47,22 @@
 
 			<div class="col-sm-4 col-md-4" id="visual">
 				<div class="panel panel-default">
-		  			<div class="panel-body">
+		  			<div class="panel-body center-block">
 						<div id="hangman"></div>
 						<div id="image"></div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="row">
+		<!-- Footer -->
+		<nav class="navbar navbar-default navbar-fixed-bottom">
+			<div class="container">
+			<p id="footer" class="navbar-text">&copy; Copyright 2017 Paul Dimaano. Images and links from <a href="http://youkai.com">Yokai.com</a></p>
+			</div>
+		</nav> 
 	</div>
 
 	

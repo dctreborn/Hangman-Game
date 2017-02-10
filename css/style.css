@@ -1,9 +1,31 @@
-.content {
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	padding-bottom: 70px;
+}
+
+.jumbotron h1 {
+	font-size: 80px;
+}
+
+.container {
 	font-family: 'Caveat Brush', cursive;
 }
 
 .panel {
+	font-size: 32px;
 	height: 350px;
+}
+
+.panel-body #hangman, .panel-body #image {
+	position: relative;
+}
+
+#message {
+	font-size: 24px;
 }
 
 #youkaiImg {
@@ -12,7 +34,17 @@
 }
 
 #wara {
+	position: absolute;
+	top: 0;
 	width: 70%;
 	height: auto;
 	overflow: hidden;
 }
+
+#footer { /* try sticker footer styling from basic*/
+	color: #777777;
+	float: none;
+	text-align: center;
+}
+
+a:link { color: #777777; }
