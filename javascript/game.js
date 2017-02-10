@@ -156,3 +156,10 @@ function gameOver(){
 		replay(); //only process if restart is true
 	}	
 }
+
+//draws hangman image
+function drawHang(){
+	//show image little by little on wrong guesses
+	//also change opacity
+	//no scroll bar
+}
