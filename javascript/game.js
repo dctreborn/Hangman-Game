@@ -167,4 +167,7 @@ function drawHang(){
 	img.attr("src","images/waraningyo.png");
 	img.attr("id","wara");
 	$("#hangman").html(img);
+
+	//change opacity and image by 1/(guesses+1)
+	$("#hangman").css("opacity",1/(guesses+1));
 }
