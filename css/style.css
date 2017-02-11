@@ -26,7 +26,7 @@ body {
 	font-family: 'Caveat Brush', cursive;
 }
 
-.panel {
+#stats, #gameArea {
 	font-size: 32px;
 	height: 350px;
 }
