@@ -11,7 +11,7 @@ function initialize(){
 	$("#numGuesses").html("Guesses Remaining: " + guesses);
 	$("#wins").html("Wins: " + wins);
 	$("#losses").html("Losses: " + losses);
-	$("#currentGuesses").html("<br>" + "Current Guesses: " + "<br>" + userGuesses);
+	$("#currentGuesses").html("<p> Current Guesses: </p>" + userGuesses);
 
 	//assign random word from pool and show as blanks for the length of the word
 	targetWord = randomWord(words);
@@ -121,7 +121,13 @@ function checkGuess(guessList, guess) {
 	}
 	else if (guesses > 0) {
 		guessList.push(guess);
-		$("#currentGuesses").append(guessList[guessList.length-1].toUpperCase() + " ");
+
+		//adds letters to current guesses and fades each letter in as they are entered
+		var newSpan = $("<span>");
+		newSpan.attr("id", "fade" + guesses);
+		newSpan.text(guessList[guessList.length-1].toUpperCase() + " ");
+		$("#currentGuesses").append(newSpan);
+		$("#fade"+guesses).css("display","none").fadeIn(2000);
 
 		//if letter is in word, find position and fill blanks
 		if (targetWord.includes(guess)) {
