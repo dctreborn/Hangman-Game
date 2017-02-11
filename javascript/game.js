@@ -5,9 +5,16 @@ function initialize(){
 	wordLength = 0;
 	userGuesses = [" "];
 	gameFlag = false;
+	roundStart = false;
 	sound = createSFX();
 
-	$("#message").html("Guess for your life...").css("display","none").fadeIn(2000);
+	var message = $("#message").html("Guess for your life...");
+
+	//run fade only at beginning
+	if (gameStart == false){
+		message.css("display","none").fadeIn(2000);
+	}
+
 	$("#numGuesses").html("Guesses Remaining: " + guesses);
 	$("#wins").html("Wins: " + wins);
 	$("#losses").html("Losses: " + losses);
@@ -174,11 +181,6 @@ function checkGuess(guessList, guess) {
 	}		
 }
 
-/*sets number of guesses; possible use for future balance
-function setGuesses(targetWord) {
-	return Math.max(5 + Math.floor(targetWord.length / 2), 10);
-}*/
-
 //checks win/loss
 function checkResult () {
 	showMessage();
@@ -199,17 +201,10 @@ function checkResult () {
 	}
 }
 
-//resets guesses, game flag, word blanks, target wordm and current guesses
-function replay(){
-	$("#blanks").empty();
-	$("#currentGuesses").empty();
-	initialize();
-}
-
 //show image of word
 function showImage(){
 	$("#hangman").empty();
-	//use objects for images
+
 	var img = $("<img>");
 	img.attr("src","images/" + wordPic);
 	img.attr("id","youkaiImg");
@@ -229,15 +224,13 @@ function showMessage(){
 	}
 	//while guessing
 	else if (guesses > 0 && wordLength < targetWord.length) {
-		$("#description").html("Footsteps come closer...").css("font-style","italic");
-	}
-}
+		var desc = $("#description").html("Footsteps come closer...").css("font-style","italic");
 
-//game over sequence
-function gameOver(){
-	if (gameFlag) {
-		replay();
-	}	
+		if (roundStart == false){
+			desc.css("display","none").fadeIn(5000);
+			roundStart = true;
+		}
+	}
 }
 
 //draws hangman image
@@ -258,4 +251,18 @@ function drawHang(){
 	//change opacity and image by 1/(guesses+1)
 	$("#hangman").css("opacity",1/(guesses+1));
 
+}
+
+//resets guesses, game flag, word blanks, target wordm and current guesses
+function replay(){
+	$("#blanks").empty();
+	$("#currentGuesses").empty();
+	initialize();
+}
+
+//game over sequence
+function gameOver(){
+	if (gameFlag) {
+		replay();
+	}	
 }

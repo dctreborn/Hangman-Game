@@ -71,6 +71,9 @@
 		//flag to determine game over
 		var gameFlag = false;
 
+		//flag to determine if round has started
+		var rountStart = false;
+
 		//contains word pool, picture file, article link
 		var words;
 		var wordPic;
@@ -103,10 +106,10 @@
 		document.onkeyup = function(event) {
 
 			if (gameStart == false) {
-				gameStart = true;
-
 				//initialize screeen
 				initialize();
+
+				gameStart = true;
 			}
 			else if (gameStart){
 				//filters out non alphanumeric keys and sets them to "1"
