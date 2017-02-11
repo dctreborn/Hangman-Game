@@ -1,8 +1,3 @@
-/*Choose a theme for your game! In the demo, we picked an 80s theme: 80s questions, 80s sound and an 80s aesthetic. You can choose any subject for your theme, though, so be creative!
-
-After the user wins/loses the game should automatically choose another word and make the user play it.
-*/
-
 //initializes screen and word pool
 function initialize(){
 	words =	createList();
@@ -167,6 +162,7 @@ function checkGuess(guessList, guess) {
 
 			$("#numGuesses").html("Guesses: " + guesses);
 			drawHang();
+			showMessage();
 		}
 	}		
 }
@@ -178,6 +174,7 @@ function setGuesses(targetWord) {
 
 //checks win/loss
 function checkResult () {
+	showMessage();
 	if (gameFlag == false){
 		if (wordLength == targetWord.length){	
 			setAudio(sound.win);
@@ -216,10 +213,17 @@ function showImage(){
 //shows message in message ID
 function showMessage(){
 	//win message
-
+	if (wordLength == targetWord.length){
+		$("#description").html(targetWord.charAt(0).toUpperCase() + targetWord.slice(1));
+	}
 	//lose message
-
+	else if (guesses == 0){
+		$("#description").html("Dead Parrot");
+	}
 	//while guessing
+	else if (guesses > 0 && wordLength < targetWord.length) {
+		$("#description").html("Footsteps come closer...");
+	}
 }
 
 //game over sequence

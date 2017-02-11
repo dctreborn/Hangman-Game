@@ -19,6 +19,7 @@ body {
 
 .jumbotron h1 {
 	font-size: 80px;
+	color: black;
 	text-shadow: -3px 0 #fff, 0 3px #fff, 3px 0 #fff, 0 -3px #fff;
 }
 
@@ -28,11 +29,7 @@ body {
 
 #stats, #gameArea {
 	font-size: 32px;
-	height: 350px;
-}
-
-.thumbnail {
-	/*set size limits*/
+	height: 190px;
 }
 
 #visual .panel-body {
@@ -44,18 +41,35 @@ body {
 	max-height: 180px;
 }
 
-#message {
+#message, #description {
 	font-size: 24px;
 }
 
-#youkaiImg, #wara {
-	width: 100%;
+#red {
+	color: #9e0c13;
 }
 
-#footer { /* try sticker footer styling from basic*/
-	color: #777777;
+#visual {
+	position: relative;
+	height: 450px;
+}
+
+#youkaiImg, #wara {
+	position: absolute;
+	left: 0;
+	height: 100%;
+}
+
+.navbar-fixed-bottom {
+	background-color: #897e7f;
+	background-image: url(../images/bg2.jpg); 
+	position: absolute;
+}
+
+#footer {
+	color: #111;
 	float: none;
 	text-align: center;
 }
 
-a:link { color: #777777; }
+a:link { color: #111; }
