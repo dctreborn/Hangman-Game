@@ -7,7 +7,7 @@ function initialize(){
 	gameFlag = false;
 	sound = createSFX();
 
-	$("#message").html("Guess for your life...");
+	$("#message").html("Guess for your life...").css("display","none").fadeIn(2000);
 	$("#numGuesses").html("Guesses Remaining: " + guesses);
 	$("#wins").html("Wins: " + wins);
 	$("#losses").html("Losses: " + losses);
@@ -134,7 +134,7 @@ function checkGuess(guessList, guess) {
 		if (targetWord.includes(guess)) {
 			for (var i = 0; i < targetWord.length; i++) {
 				if (guess == targetWord.charAt(i)) {
-					$("#"+i).html(guess);
+					$("#"+i).html(guess).css("display","none").fadeIn(1500);
 					wordLength++;
 				}
 			}
