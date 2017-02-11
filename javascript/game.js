@@ -124,10 +124,11 @@ function checkGuess(guessList, guess) {
 
 		//adds letters to current guesses and fades each letter in as they are entered
 		var newSpan = $("<span>");
-		newSpan.attr("id", "fade" + guesses);
-		newSpan.text(guessList[guessList.length-1].toUpperCase() + " ");
+		var index = guessList.length - 1;
+		newSpan.attr("id", "fade" + index);
+		newSpan.text(guessList[index].toUpperCase() + " ");
 		$("#currentGuesses").append(newSpan);
-		$("#fade"+guesses).css("display","none").fadeIn(2000);
+		$("#fade" + index).css("display","none").fadeIn(1500);
 
 		//if letter is in word, find position and fill blanks
 		if (targetWord.includes(guess)) {
@@ -220,15 +221,15 @@ function showImage(){
 function showMessage(){
 	//win message
 	if (wordLength == targetWord.length){
-		$("#description").html(targetWord.charAt(0).toUpperCase() + targetWord.slice(1));
+		$("#description").html("<b>"+targetWord.charAt(0).toUpperCase() + targetWord.slice(1)+"</b>");
 	}
 	//lose message
 	else if (guesses == 0){
-		$("#description").html("Dead Parrot");
+		$("#description").html("<b>Dead Parrot</b>");
 	}
 	//while guessing
 	else if (guesses > 0 && wordLength < targetWord.length) {
-		$("#description").html("Footsteps come closer...");
+		$("#description").html("Footsteps come closer...").css("font-style","italic");
 	}
 }
 
