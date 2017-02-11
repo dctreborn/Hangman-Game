@@ -6,7 +6,7 @@ After the user wins/loses the game should automatically choose another word and 
 //initializes screen and word pool
 function initialize(){
 	words =	createList();
-	guesses = 6;
+	guesses = 7;
 	wordLength = 0;
 	userGuesses = [" "];
 	gameFlag = false;
@@ -24,12 +24,14 @@ function initialize(){
 	blanks(targetWord);
 }
 
+//plays audio
 function setAudio(path){
 	var audio = document.createElement("audio");
 	audio.setAttribute("src","sound/" + path);
 	audio.play();
 }
 
+//creates sound library
 function createSFX(){
 	return {
 		win: "Door4.ogg",
@@ -43,11 +45,11 @@ function createSFX(){
 }
 
 //word template
-function youkai(name, image, url){
+function youkai(name, image){
 	return {
 	name: name,
-	image: image,
-	url: url
+	image: name.replace(/\s/g, '') + "." + image,
+	url: name.replace(/\s/g, '')
 	}
 }
 
@@ -56,11 +58,30 @@ function createList(){
 	var array = [];
 
 	//list of words
-	array.push(youkai("kistune", "kitsune.jpg", "http://yokai.com/kitsune/"));
-	array.push(youkai("yuki onna", "yukionna.jpg", ""));
-	array.push(youkai("kappa", "kappa.jpg", ""));
-	array.push(youkai("oni", "oni.jpg", ""));
-	array.push(youkai("yamata no orochi", "yamatanoorochi.png", ""));
+	array.push(youkai("kitsune", "jpg"));
+	array.push(youkai("yuki onna", "jpg"));
+	array.push(youkai("kappa", "jpg"));
+	array.push(youkai("oni", "jpg"));
+	array.push(youkai("yamata no orochi", "png"));
+	array.push(youkai("nue", "jpg"));
+	array.push(youkai("shuten doji","jpg"));
+	array.push(youkai("akaname","jpg"));
+	array.push(youkai("baku","jpg"));
+	array.push(youkai("tsuchigumo","jpg"));
+	array.push(youkai("enma daiou","png"));
+	array.push(youkai("futakuchi onna","jpg"));
+	array.push(youkai("hitodama","jpg"));
+	array.push(youkai("ibaraki doji","jpg"));
+	array.push(youkai("kama itachi","jpg"));
+	array.push(youkai("kasha","jpg"));
+	array.push(youkai("bakeneko","jpg"));
+	array.push(youkai("nekomata","jpg"));
+	array.push(youkai("nurikabe","jpg"));
+	array.push(youkai("nurarihyon","jpg"));
+	array.push(youkai("satori","jpg"));
+	array.push(youkai("shiisaa","jpg"));
+	array.push(youkai("tanuki","jpg"));
+	array.push(youkai("yamabiko","jpg"));
 
 	return array;
 }
@@ -180,6 +201,7 @@ function replay(){
 	$("#currentGuesses").empty();
 	initialize();
 }
+
 //show image of word
 function showImage(){
 	$("#hangman").empty();
@@ -188,7 +210,16 @@ function showImage(){
 	img.attr("src","images/" + wordPic);
 	img.attr("id","youkaiImg");
 	$("#image").html(img);
-	$("#youkaiImg").wrap($("<a>",{href: wordUrl, target: "_blank"}));
+	$("#youkaiImg").wrap($("<a>",{href: "http://yokai.com/" + wordUrl, target: "_blank"}));
+}
+
+//shows message in message ID
+function showMessage(){
+	//win message
+
+	//lose message
+
+	//while guessing
 }
 
 //game over sequence
@@ -207,6 +238,11 @@ function drawHang(){
 	img.attr("src","images/waraningyo.png");
 	img.attr("id","wara");
 	$("#hangman").html(img);
+
+	//add link if loss
+	if (guesses == 0) {
+		$("#wara").wrap($("<a>",{href: "http://yokai.com/waraningyou", target: "_blank"}));
+	}
 
 	//change opacity and image by 1/(guesses+1)
 	$("#hangman").css("opacity",1/(guesses+1));
