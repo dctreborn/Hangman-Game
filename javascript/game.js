@@ -5,14 +5,14 @@ After the user wins/loses the game should automatically choose another word and 
 
 //initializes screen and word pool
 function initialize(){
-	console.log("initialize");
 	words =	createList();
 	guesses = 6;
 	wordLength = 0;
 	userGuesses = [" "];
 	gameFlag = false;
+	sound = createSFX();
 
-	$(".caption").empty();
+	$("#message").html("Guess for your life...");
 	$("#numGuesses").html("Guesses Remaining: " + guesses);
 	$("#wins").html("Wins: " + wins);
 	$("#losses").html("Losses: " + losses);
@@ -22,6 +22,24 @@ function initialize(){
 	targetWord = randomWord(words);
 	//guesses = setGuesses(targetWord); possible use for future balance
 	blanks(targetWord);
+}
+
+function setAudio(path){
+	var audio = document.createElement("audio");
+	audio.setAttribute("src","sound/" + path);
+	audio.play();
+}
+
+function createSFX(){
+	return {
+		win: "Door4.ogg",
+		lose: "creepy.mp3",
+		move1: "Move1.ogg",
+		move2: "Move2.ogg",
+		move3: "Move3.ogg",
+		move4: "Move4.ogg",
+		move5: "Move5.ogg"
+	}
 }
 
 //word template
@@ -101,6 +119,31 @@ function checkGuess(guessList, guess) {
 		//if letter is not in word, decrease guesses
 		else {
 			guesses--;
+			switch (Math.floor(Math.random() * 6)) {
+				case 1:
+					setAudio(sound.move1);
+				break;
+
+				case 2:
+					setAudio(sound.move2);
+				break;
+
+				case 3:
+					setAudio(sound.move3);
+				break;
+
+				case 4:
+					setAudio(sound.move4);
+				break;
+
+				case 5:
+					setAudio(sound.move5);
+				break;
+
+				default:
+				break;
+			}
+
 			$("#numGuesses").html("Guesses: " + guesses);
 			drawHang();
 		}
@@ -116,15 +159,15 @@ function setGuesses(targetWord) {
 function checkResult () {
 	if (gameFlag == false){
 		if (wordLength == targetWord.length){	
-			console.log("you win!");//replace with proper code
-			wins++;//define exit code
+			setAudio(sound.win);
+			wins++;
 			gameFlag = true;
 			$("#wins").html("Wins: " + wins);
 			showImage();
 		}
 		else if (guesses == 0){
-			console.log("you lose...");//replace with proper code
-			losses++;//define exit code
+			setAudio(sound.lose);
+			losses++;
 			gameFlag = true;
 			$("#losses").html("Losses: " + losses);
 		}
@@ -133,7 +176,6 @@ function checkResult () {
 
 //resets guesses, game flag, word blanks, target wordm and current guesses
 function replay(){
-	console.log("replay");
 	$("#blanks").empty();
 	$("#currentGuesses").empty();
 	initialize();
@@ -152,9 +194,7 @@ function showImage(){
 //game over sequence
 function gameOver(){
 	if (gameFlag) {
-		console.log("game over");
-		console.log("restart game?")
-		replay(); //only process if restart is true
+		replay();
 	}	
 }
 
@@ -171,9 +211,4 @@ function drawHang(){
 	//change opacity and image by 1/(guesses+1)
 	$("#hangman").css("opacity",1/(guesses+1));
 
-	if (guesses == 0) {
-		var audio = document.createElement("audio");
-		audio.setAttribute("src","images/creepy.mp3");
-		audio.play();
-	}
 }
