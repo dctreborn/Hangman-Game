@@ -30,7 +30,6 @@ function youkai(name, image, url){
 	name: name,
 	image: image,
 	url: url
-	//to add url link to youkai article
 	}
 }
 
@@ -171,4 +170,10 @@ function drawHang(){
 
 	//change opacity and image by 1/(guesses+1)
 	$("#hangman").css("opacity",1/(guesses+1));
+
+	if (guesses == 0) {
+		var audio = document.createElement("audio");
+		audio.setAttribute("src","images/creepy.mp3");
+		audio.play();
+	}
 }

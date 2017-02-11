@@ -20,6 +20,10 @@ body {
 	height: 350px;
 }
 
+.thumbnail {
+	/*set size limits*/
+}
+
 #visual .panel-body {
 	position: relative;
 }
