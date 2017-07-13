@@ -59,6 +59,11 @@ body {
 	height: 100%;
 }
 
+#git {
+	width: 2em;
+	height: 2em;
+}
+
 .navbar-fixed-bottom {
 	background-color: #897e7f;
 	background-image: url(../images/bg2.jpg); 
